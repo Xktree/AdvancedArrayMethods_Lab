@@ -224,36 +224,96 @@ console.log("The following options have serving counts which are even:", evenSer
 //Double Hint: Research 'javascript does array include item'
 //Filter
 
+function chickpeaIngredientFilter(){
+    let results = dishes.filter(function(el){
+        return el.ingredients.includes("chickpea");
+    });
+    return results;
+}
 
+let chickpeaDish = chickpeaIngredientFilter();
+console.log("The following options have chickpeas as an ingredient:", chickpeaDish);
 
 //7. Create a function that will prompt the user to type the name of one ingredient. Then use a filter to find all the dishes whose ingredients array INCLUDES that ingredient. Return the new array.
 //Filter
 
+// function promptIngredientFilter(){
+//     let results = dishes.filter(function(el){
+        
+//     });
+//     return results;
+// }
 
 
 //8a. Create a function that will return an array of the string cuisine types. Ie, ["Italian", "Italian", "Mexican", ...]
 //Map
 
+function cuisineTypeFilter(){
+    let results = dishes.map(function(el){
+        return (el.cuisine);
+    });
+    let cuisineList = [new Set(results)];
+    return cuisineList;
+}
 
+let cuisineNames = cuisineTypeFilter();
+console.log("The following options are the different cuisine types:", cuisineNames);
 
 //9. Create a function that will return an array of strings, with the cuisine type appended to the start of the dish's name. Ie, ["Italian Pizza", "Italian Spaghetti", ...]
 //Map 
 
+function cuisineTypeDish(){
+    let results = dishes.map(function(el){
+        return (`${el.cuisine} ${el.name}`);
+    });
+    return results;
+}
 
+let cuisineOfDish = cuisineTypeDish();
+console.log("The following options have the cuisine type listed with the dish name:", cuisineOfDish);
 
 //10. Create a function that will use advanced array methods on the 'dishes' array and return the result ["Vegetarian Lasagna", "Vegetarian Falafel", "Vegetarian Chili"]
 
+function vegetarianFilter(){
+    let veggieDishes = dishes.filter(function(el){
+        return (el.cuisine === "Vegetarian");
+    });
+    let results = veggieDishes.map(function(el){
+        return (`${el.cuisine} ${el.name}`);
+    });
+    return results;
+}
 
-
-
+let vegetarianDishes = vegetarianFilter();
+console.log("The following options are vegetarian exclusive options:", vegetarianDishes);
 
 //BONUS
 
-//8b. Use the filter method to eliminate duplicate from problem 8a.
+//8b. Use the filter method to eliminate duplicates from problem 8a.
 
 //11. Create a function that will return dishes whose ingredients array INCLUDES "tomato" OR "cheese".
 //Hint: You do not want to check the array's indexes to find out what the array INCLUDES.
 //Filter
+
+function tomatoOrCheeseIngredientFilter(){
+    let results = dishes.filter(function(el){
+        if (el.ingredients[0] === "tomato"){
+            return true;
+        }
+        else if (el.ingredients[1] === "tomato"){
+            return true;
+        }
+        else if (el.ingredients[0] === "cheese"){
+        }
+        else if (el.ingredients[1] === "cheese"){
+            return true;
+        }
+    });
+    return results;
+}
+
+let tomatoCheese = tomatoOrCheeseIngredientFilter();
+console.log("The following options have ingredients which include tomato or cheese:", tomatoCheese);
 
 //12. Create a function that will return the total serving count of all dishes.
 //Must use Reduce, not a loop.
